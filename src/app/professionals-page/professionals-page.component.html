@@ -1,0 +1,5 @@
+<section>
+  @for (professional of professionals(); track professional.id_profissionais) {
+  <app-professionals-card [professionalImgUrl]="professional.imagem_url" [professionalName]="professional.nome" />
+  }
+</section>
