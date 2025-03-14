@@ -8,5 +8,6 @@ import { Component, input } from '@angular/core';
 })
 export class ProfessionalsCardComponent {
   professionalName = input.required<string>();
+  professionalService = input.required<string>();
   professionalImgUrl = input.required<string>();
 }
