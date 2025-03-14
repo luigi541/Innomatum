@@ -1,3 +1,4 @@
+<app-header></app-header>
 <main>
   <div class="professionals-page-title">
     <h1>
@@ -37,7 +38,7 @@
         professional of professionals;
         track professional.id_profissionais
         ) {
-        <app-professionals-card [professionalImgUrl]="professional.imagem_url" [professionalName]="professional.nome"
+        <app-professionals-card (click)="redirect(professional.id_profissionais)"[professionalImgUrl]="professional.imagem_url" [professionalName]="professional.nome"
           [professionalService]="professional.servico.nome" />
         }
         }

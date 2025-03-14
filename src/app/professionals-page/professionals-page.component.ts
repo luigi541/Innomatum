@@ -7,15 +7,17 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import Servico from '../../interfaces/Servico';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HeaderComponent } from '../header/header.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professionals-page',
-  imports: [ProfessionalsCardComponent, AsyncPipe, CommonModule, FontAwesomeModule],
+  imports: [ProfessionalsCardComponent, AsyncPipe, CommonModule, FontAwesomeModule, HeaderComponent],
   templateUrl: './professionals-page.component.html',
   styleUrl: './professionals-page.component.css',
 })
 export class ProfessionalsPageComponent implements OnInit {
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   faXMark = faXmark;
   professionals$!: Observable<Professional[]>;
@@ -36,5 +38,10 @@ export class ProfessionalsPageComponent implements OnInit {
     this.activeFilterServiceId = 0;
     this.professionals$ = this.apiService.getProfissionais();
     this.isFilterActive = false;
+  }
+
+  redirect(id:number): void {
+    this.router.navigate(["agendamento/"+ id])
+    
   }
 }
