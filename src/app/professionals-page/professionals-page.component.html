@@ -1,38 +1,47 @@
 <main>
-  <h1>
-    Consule aqui todos os nossos <br />
-    Profissionais
-  </h1>
-  @if (services$ | async; as services) {
-    <div>
+  <div class="professionals-page-title">
+    <h1>
+      Consule aqui todos os nossos <br />
+      Profissionais
+    </h1>
+  </div>
+  <div class="professionals-page-content">
+    @if (services$ | async; as services) {
+    <div class="professionals-page-filters">
+      <div class="professionals-page-filters-header">
+        <h4>Filtros</h4>
+        @if (isFilterActive) {
+        <button type="button" (click)="onResetFiltersClick()">
+          <fa-icon [icon]="faXMark" size="lg"></fa-icon>
+        </button>
+        }
+      </div>
       <ul>
         @for (service of services; track service.id) {
-          <li id="{{ service.id }}">
-            <button (click)="onServiceFilterClick(service.id)" type="button">
-              {{ service.nome }}
-            </button>
-          </li>
+        <li class="professionals-page-filters-li" id="{{ service.id }}">
+          <button class="professionals-page-filters-button" (click)="onServiceFilterClick(service.id)" type="button"
+            [ngClass]="{
+                  'filter-active': service.id === activeFilterServiceId,
+                }">
+            {{ service.nome }}
+          </button>
+        </li>
         }
       </ul>
-      @if (isFilterActive) {
-        <button type="button" (click)="onResetFiltersClick()">
-          Apagar filtros
-        </button>
-      }
     </div>
-  }
-  <section>
-    @if (professionals$ | async; as professionals) {
-      @for (
+    }
+    <div class="professionals-page-cards-container">
+      <section class="professionals-page-cards">
+        @if (professionals$ | async; as professionals) {
+        @for (
         professional of professionals;
         track professional.id_profissionais
-      ) {
-        <app-professionals-card
-          [professionalImgUrl]="professional.imagem_url"
-          [professionalName]="professional.nome"
-          [professionalService]="professional.servico.nome"
-        />
-      }
-    }
-  </section>
+        ) {
+        <app-professionals-card [professionalImgUrl]="professional.imagem_url" [professionalName]="professional.nome"
+          [professionalService]="professional.servico.nome" />
+        }
+        }
+      </section>
+    </div>
+  </div>
 </main>
