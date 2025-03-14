@@ -1,9 +1,12 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideRouter } from '@angular/router';
 import { AppComponent } from './app/app.component';
-import { provideHttpClient } from '@angular/common/http';
+import { routes } from './app/app.routes'; // Importa as rotas
+import { provideHttpClient } from '@angular/common/http'; // Necessário para o ApiService
 
 bootstrapApplication(AppComponent, {
-  ...appConfig,
-  providers: [provideHttpClient()],
+  providers: [
+    provideRouter(routes), 
+    provideHttpClient() 
+  ]
 }).catch((err) => console.error(err));
