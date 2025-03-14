@@ -1,10 +1,22 @@
-<div *ngIf="profissional" class="container">
-  <!-- Foto do profissional -->
-  <img [src]="profissional.imagem_url" alt="Foto de {{ profissional.nome }}" class="foto-profissional" />
+<div class="barra-superior">
+  <button class="btn-voltar" (click)="voltarPagina()">&#8592; Voltar</button>
+</div>
 
-  <h2>{{ profissional.nome }}</h2>
-  <p><strong>Local:</strong> {{ profissional.local }}, {{ profissional.cidade }}</p>
-  <p><strong>Contato:</strong> {{ profissional.numero }}</p><br>
+<div *ngIf="profissional" class="container">
+  <!-- Seção com a foto e informações ao lado -->
+  <div class="profissional-info">
+    <!-- Foto do profissional -->
+    <img [src]="profissional.imagem_url" alt="Foto de {{ profissional.nome }}" class="foto-profissional" />
+
+    <!-- Informações ao lado da foto -->
+    <div class="info-texto">
+      <h2>{{ profissional.nome }}</h2>
+      <p><strong>Local:</strong> <span> {{ profissional.local }}, {{ profissional.cidade }}</span></p>
+      <p><strong>Contato:</strong> <span>{{ profissional.numero }}</span></p>
+    </div>
+  </div>
+
+  <br>
   <h3>Pedido de Agendamento</h3>
 
   <form #formAgendamento="ngForm" (ngSubmit)="onSubmit()">

@@ -40,4 +40,8 @@ export class AgendamentoServicoComponent implements OnInit {
     this.formularioEnviado = true;
     console.log('Formulário enviado:', this.formData);
   }
+  voltarPagina(): void {
+    window.history.back();
+  }
+  
 }  

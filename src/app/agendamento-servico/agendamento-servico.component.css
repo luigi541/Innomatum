@@ -1,7 +1,7 @@
 /* Estilo geral da página */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f5f3; 
+  background-color: #f9f5f3;
   margin: 0;
   padding: 0;
   display: flex;
@@ -21,6 +21,15 @@ body {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilização da seção com a foto e informações */
+.profissional-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
 /* Foto do profissional */
 .foto-profissional {
   width: 150px;
@@ -28,15 +37,18 @@ body {
   object-fit: cover;
   border-radius: 10px;
   background-color: #807878;
-  display: block;
-  margin: 0 auto;
+}
+
+/* Ajusta a parte de texto ao lado da imagem */
+.info-texto {
+  margin-left: 15px;
 }
 
 /* Nome do profissional */
 h2 {
   font-size: 22px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 /* Informações do profissional */
@@ -106,10 +118,51 @@ button:hover {
 
 /* Garantir que o container principal fique centralizado na tela */
 .container {
-  margin: 0 auto; 
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
 }
 
+/* Barra Superior */
+.barra-superior {
+  width: 100%;
+  background-color: #b8cedb;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Ajuste para empurrar o conteúdo para baixo */
+.container {
+  margin-top: 70px;
+}
+
+/* Botão de Voltar */
+.btn-voltar {
+  background-color: #729db0;
+  border: none;
+  color: rgb(48, 48, 48);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-left: 15px;
+  transition: background 0.3s;
+  display: inline-block;
+  width: auto;
+}
+
+.btn-voltar:hover {
+  background-color: #2f6889;
+}
+
+
+span {
+  font-weight: normal;
+}
