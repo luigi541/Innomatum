@@ -42,6 +42,7 @@ body {
 /* Ajusta a parte de texto ao lado da imagem */
 .info-texto {
   margin-left: 15px;
+  padding: 10px;
 }
 
 /* Nome do profissional */

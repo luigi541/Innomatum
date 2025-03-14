@@ -2,7 +2,7 @@
 <main>
   <div class="professionals-page-title">
     <h1>
-      Consule aqui todos os nossos <br />
+      Consulte aqui todos os nossos <br />
       Profissionais
     </h1>
   </div>
@@ -20,10 +20,14 @@
       <ul>
         @for (service of services; track service.id) {
         <li class="professionals-page-filters-li" id="{{ service.id }}">
-          <button class="professionals-page-filters-button" (click)="onServiceFilterClick(service.id)" type="button"
+          <button
+            class="professionals-page-filters-button"
+            (click)="onServiceFilterClick(service.id)"
+            type="button"
             [ngClass]="{
                   'filter-active': service.id === activeFilterServiceId,
-                }">
+                }"
+          >
             {{ service.nome }}
           </button>
         </li>
@@ -33,15 +37,15 @@
     }
     <div class="professionals-page-cards-container">
       <section class="professionals-page-cards">
-        @if (professionals$ | async; as professionals) {
-        @for (
-        professional of professionals;
-        track professional.id_profissionais
-        ) {
-        <app-professionals-card (click)="redirect(professional.id_profissionais)"[professionalImgUrl]="professional.imagem_url" [professionalName]="professional.nome"
-          [professionalService]="professional.servico.nome" />
-        }
-        }
+        @if (professionals$ | async; as professionals) { @for ( professional of
+        professionals; track professional.id_profissionais ) {
+        <app-professionals-card
+          (click)="redirect(professional.id_profissionais)"
+          [professionalImgUrl]="professional.imagem_url"
+          [professionalName]="professional.nome"
+          [professionalService]="professional.servico.nome"
+        />
+        } }
       </section>
     </div>
   </div>
