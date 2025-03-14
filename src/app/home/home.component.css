@@ -2,13 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-}
-
-.image {
-  height: 100px;
-  width: 100px;
-  image-rendering: auto;
+  position: static;
 }
 
 html, body {
@@ -58,6 +52,7 @@ nav ul li a:hover {
   color: #3d92b4;
 }
 
+/* Seção de Conta */
 .account {
   display: flex;
   align-items: center;
@@ -95,7 +90,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  image-rendering: auto;
   width: 100%;
   height: 768px;
 }

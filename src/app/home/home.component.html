@@ -1,24 +1,11 @@
 <html>
-<header>
-    <div class="logo">PROCONNECT</div>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Serviços</a></li>
-        <li><a href="#">Contactos</a></li>
-      </ul>
-    </nav>
-    <div class="account">
-        <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1741790202~exp=1741793802~hmac=4a8593a48197d68f83106e7c240f4e0fd907d0404e8fb92bab733b8c127c65ad&w=740" alt="Imagem de Utilizador" class="user-image">
-      <button class="account-btn">A tua conta</button>
-    </div>
-</header>
+<app-header></app-header>
 <body>
   <div class="hero">
     <div class="hero_content">
       <h1>Serviços ao<br>Domicílio</h1>
       <div class="explore">
-        <p><button>CONTRATAR</button> Comece <strong>já.</strong></p>
+        <p><a href="profissionais"><button>CONTRATAR</button></a> Comece <strong>já.</strong></p>
       </div>
     </div>
     </div>
@@ -35,47 +22,16 @@
       <h2 class="container2">Profissionais</h2>
       <div class="container2">
         <div class="grelha">
-            <div class="item">
-                <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-875.jpg?w=740" alt="Encanação">
-                <h3>João Silva</h3>
-                <p>Especialista em encanamento e reparos hidráulicos.</p>
-                <button class="agendar-btn">Agendar</button>
-            </div>
-
-            <div class="item">
-                <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-875.jpg?w=740" alt="Eletricista">
-                <h3>Maria Souza</h3>
-                <p>Eletricista experiente para instalações e manutenções elétricas.</p>
-                <button class="agendar-btn">Agendar</button>
-            </div>
-
-            <div class="item">
-                <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-875.jpg?w=740" alt="Limpeza">
-                <h3>Carlos Mendes</h3>
-                <p>Serviço de limpeza residencial e comercial.</p>
-                <button class="agendar-btn">Agendar</button>
-            </div>
-
-            <div class="item">
-                <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-875.jpg?w=740" alt="Jardinagem">
-                <h3>Fernanda Lima</h3>
-                <p>Especialista em jardinagem e paisagismo.</p>
-                <button class="agendar-btn">Agendar</button>
-            </div>
-
-            <div class="item">
-                <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-875.jpg?w=740" alt="Carpintaria">
-                <h3>Ricardo Alves</h3>
-                <p>Trabalhos de marcenaria e móveis sob medida.</p>
-                <button class="agendar-btn">Agendar</button>
-            </div>
-
-            <div class="item">
-                <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-875.jpg?w=740" alt="Mecânico">
-                <h3>Vanessa Rocha</h3>
-                <p>Mecânica automotiva com atendimento a domicílio.</p>
-                <button class="agendar-btn">Agendar</button>
-            </div>
+            @if (profissionais$ | async; as profissionais) {
+                @for (profissional of profissionais.slice(0,6); track profissional.id_profissionais) {
+                    <div class="item">
+                        <img [src]="profissional.imagem_url">
+                        <h3>{{profissional.nome}}</h3>
+                        <p>{{profissional.servico.nome}}</p>
+                        <button class="agendar-btn"(click)="redirect(profissional.id_profissionais)">Agendar</button>
+                    </div>
+                }
+            }
         </div>
     </div>
 
