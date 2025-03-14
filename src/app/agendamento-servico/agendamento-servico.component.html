@@ -1,0 +1,45 @@
+<div class="barra-superior">
+  <button class="btn-voltar" (click)="voltarPagina()">&#8592; Voltar</button>
+</div>
+
+<div *ngIf="profissional" class="container">
+  <!-- Seção com a foto e informações ao lado -->
+  <div class="profissional-info">
+    <!-- Foto do profissional -->
+    <img [src]="profissional.imagem_url" alt="Foto de {{ profissional.nome }}" class="foto-profissional" />
+
+    <!-- Informações ao lado da foto -->
+    <div class="info-texto">
+      <h2>{{ profissional.nome }}</h2>
+      <p><strong>Local:</strong> <span> {{ profissional.local }}, {{ profissional.cidade }}</span></p>
+      <p><strong>Contato:</strong> <span>{{ profissional.numero }}</span></p>
+    </div>
+  </div>
+
+  <br>
+  <h3>Pedido de Agendamento</h3>
+
+  <form #formAgendamento="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" [(ngModel)]="formData.data" required />
+    </div>
+
+    <div class="form-group">
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora" [(ngModel)]="formData.hora" required />
+    </div>
+
+    <button type="submit">Agendar</button>
+  </form>
+
+  <!-- Mensagem de sucesso após o agendamento -->
+  <div *ngIf="formularioEnviado" class="mensagem-sucesso">
+    <p>Pedido de agendamento realizado com sucesso! O profissional entrará em contato em breve.</p>
+  </div>
+</div>
+
+<!-- Caso o profissional não seja encontrado -->
+<div *ngIf="!profissional">
+  <p>Profissional não encontrado.</p>
+</div>
