@@ -128,7 +128,7 @@ button:hover {
 /* Barra Superior */
 .barra-superior {
   width: 100%;
-  background-color: #b8cedb;
+  background-color: #007bff;
   padding: 10px;
   position: fixed;
   top: 0;
@@ -161,7 +161,6 @@ button:hover {
 .btn-voltar:hover {
   background-color: #2f6889;
 }
-
 
 span {
   font-weight: normal;
