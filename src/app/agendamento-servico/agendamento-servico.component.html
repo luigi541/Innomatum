@@ -1,0 +1,33 @@
+<div *ngIf="profissional" class="container">
+  <!-- Foto do profissional -->
+  <img [src]="profissional.imagem_url" alt="Foto de {{ profissional.nome }}" class="foto-profissional" />
+
+  <h2>{{ profissional.nome }}</h2>
+  <p><strong>Local:</strong> {{ profissional.local }}, {{ profissional.cidade }}</p>
+  <p><strong>Contato:</strong> {{ profissional.numero }}</p><br>
+  <h3>Pedido de Agendamento</h3>
+
+  <form #formAgendamento="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" [(ngModel)]="formData.data" required />
+    </div>
+
+    <div class="form-group">
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora" [(ngModel)]="formData.hora" required />
+    </div>
+
+    <button type="submit">Agendar</button>
+  </form>
+
+  <!-- Mensagem de sucesso após o agendamento -->
+  <div *ngIf="formularioEnviado" class="mensagem-sucesso">
+    <p>Pedido de agendamento realizado com sucesso! O profissional entrará em contato em breve.</p>
+  </div>
+</div>
+
+<!-- Caso o profissional não seja encontrado -->
+<div *ngIf="!profissional">
+  <p>Profissional não encontrado.</p>
+</div>
