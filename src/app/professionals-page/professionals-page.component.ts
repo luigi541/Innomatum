@@ -23,7 +23,6 @@ export class ProfessionalsPageComponent implements OnInit {
     this.services$ = this.apiService.getServicos();
     this.professionals$ = this.apiService.getProfissionais();
   }
-
   onServiceFilterClick(serviceId: number): void {
     this.professionals$ = this.apiService.getProfissionaisPorServico(serviceId);
     this.isFilterActive = true;

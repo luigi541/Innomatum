@@ -1,9 +1,9 @@
-<section>
-  <div>
-   <img [src]="professionalImgUrl()" alt="Imagem de perfil do profissional">
-  </div>
-  <div>
-    <p>{{professionalName()}}</p>
-    <p>{{professionalService()}}</p>
+<section class="professional-card">
+  <img [src]="professionalImgUrl()" alt="Imagem de perfil do profissional" />
+  <div class="professional-card-info">
+    <p>
+      <b>{{ professionalName() }}</b>
+    </p>
+    <p>{{ professionalService() }}</p>
   </div>
 </section>
