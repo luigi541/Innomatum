@@ -24,7 +24,9 @@ export class AgendamentoServicoComponent implements OnInit {
 
     if (profissionalId) {
       this.apiService.getProfissionalById(+profissionalId).subscribe(
-        (profissional) => (this.profissional = profissional),
+        (profissional) => {
+          this.profissional = profissional;
+        },
         (error) => console.error('Erro ao buscar o profissional:', error)
       );
     } else {
@@ -43,5 +45,4 @@ export class AgendamentoServicoComponent implements OnInit {
   voltarPagina(): void {
     window.history.back();
   }
-  
-}  
+}
